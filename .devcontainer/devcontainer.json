@@ -1,0 +1,10 @@
+{
+  "name": "PySpark Dev",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/java:latest": {
+      "version" : "17"
+    }
+  },
+  "postCreateCommand": "pip install pyspark jupyterlab"
+}
