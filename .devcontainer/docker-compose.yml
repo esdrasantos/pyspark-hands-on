@@ -1,19 +1,28 @@
-version: "3.8"
+version: "3.8" 
 
 services:
+  workspace:
+    image: mcr.microsoft.com/devcontainers/python:3.12
+    container_name: pyspark-workspace
+    volumes:
+      - ..:/workspaces/pyspark-hands-on
+    command: sleep infinity
+    depends_on:
+      - mysql
+
   mysql:
-    image: mysql:8.0
-    container_name: mysql
-    restart: always
+    image: mysql:9.5.0
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: teste_spark
-      MYSQL_USER: esdra
-      MYSQL_PASSWORD: esdra123
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sparkdb
+      MYSQL_USER: spark
+      MYSQL_PASSWORD: spark
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
-  mysql_data:
+  mysql-data:

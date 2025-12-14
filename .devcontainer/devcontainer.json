@@ -1,15 +1,17 @@
 {
   "name": "PySpark + MySQL",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "mysql",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/pyspark-hands-on",
   "features": {
     "ghcr.io/devcontainers/features/java:latest": {
       "version": "17"
-    },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
     }
   },
-  "postCreateCommand": "pip install pyspark"
+  "postCreateCommand": "pip install pyspark mysql-connector-python",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
 }
