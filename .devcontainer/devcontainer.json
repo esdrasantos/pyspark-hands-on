@@ -3,12 +3,11 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "workspace",
   "workspaceFolder": "/workspaces/pyspark-hands-on",
+  "remoteUser": "root",
   "features": {
-    "ghcr.io/devcontainers/features/java:latest": {
-      "version": "17"
-    }
+    "ghcr.io/devcontainers/features/java:latest": {"version": "17"}
   },
-  "postCreateCommand": "pip install pyspark mysql-connector-python",
+  "postCreateCommand": "apt-get update && apt-get install -y mariadb-client && pip install pyspark mysql-connector-python",
   "customizations": {
     "vscode": {
       "extensions": ["ms-python.python"]
