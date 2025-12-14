@@ -27,4 +27,8 @@ df_mysql = (
     .load()
 )
 
+print('Data:')
 df_mysql.show()
+
+print('Schema:')
+df_mysql.printSchema()
