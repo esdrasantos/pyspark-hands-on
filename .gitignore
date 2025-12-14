@@ -15,6 +15,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+libs/mysql-connector-j-9.5.0
 lib64/
 parts/
 sdist/
