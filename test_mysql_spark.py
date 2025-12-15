@@ -71,3 +71,36 @@ dummy.show()
 print('Display o Dummy head row (1st one)')
 print(dummy.head())
 
+print('Number of rows in dataframe:',dummy.count())
+
+print('Number of columns of dataframe:', len(dummy.columns), '\n')
+
+print('***** Descriptive Statistic of Dataframe (Dummy) *****')
+dummy.describe().show()
+
+print('Statistic just for indicated columns:')
+dummy.describe('Salary').show()
+
+print('Showing top 5 rows of selected columns:')
+dummy.select('FirstName','Salary').show(5)
+
+print('Distinct count of a column values')
+print(dummy.select('Salary').distinct().count())
+
+print('Diff values between columns in dataframes')
+
+dummy2 = spark.read.csv(
+    "dummy2.csv",
+    header=True,
+    inferSchema=True
+)
+dummy.show()
+dummy2.show()
+
+diff_cat_in_dummy2_dummy = dummy2.select('Salary')\
+                           .subtract(dummy.select('Salary'))
+
+diff_cat_in_dummy2_dummy.show()
+
+print('Number of different values in Salary on 2016 and 2017')
+print(diff_cat_in_dummy2_dummy.distinct().count())
