@@ -10,7 +10,10 @@
   "postCreateCommand": "apt-get update && apt-get install -y mariadb-client && pip install pyspark mysql-connector-python",
   "customizations": {
     "vscode": {
-      "extensions": ["ms-python.python"]
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
     }
   }
 }
